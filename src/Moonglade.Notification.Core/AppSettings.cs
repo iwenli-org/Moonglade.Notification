@@ -10,6 +10,9 @@ namespace Moonglade.Notification.Core
         public int SmtpServerPort { get; set; }
         public string SmtpServer { get; set; }
         public string SmtpUserName { get; set; }
+        public string SmtpPassword { get; set; }
+        public string AdminEmail { get; set; }
+        public string EmailDisplayName { get; set; }
         public IReadOnlyCollection<ApiKey> ApiKeys { get; set; }
     }
 }

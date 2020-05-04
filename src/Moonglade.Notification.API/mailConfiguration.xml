@@ -2,40 +2,40 @@
 <MailConfiguration>
   <CommonConfiguration OverrideToAddress="false" ToAddress="" />
   <MailMessage MessageType="TestMail" IsHtml="true">
-    <MessageSubject>[edi.wang] Test Email on {MachineName.Value}</MessageSubject>
+    <MessageSubject>测试电子邮件 {MachineName.Value}</MessageSubject>
     <MessageBody>
       <![CDATA[
-<p>Email is successfully configured.</p>
+<p>电子邮件已成功配置.</p>
 <table style="border: 1px solid #dee2e6;border-collapse: collapse;font-family: Consolas, 'Courier New', Courier, monospace;font-size: 12px;">
     <thead>
         <tr>
-            <th style="vertical-align: bottom;border: 1px solid #dee2e6;padding: 5px;">Property</th>
-            <th style="vertical-align: bottom;border: 1px solid #dee2e6;padding: 5px;">Value</th>
+            <th style="vertical-align: bottom;border: 1px solid #dee2e6;padding: 5px;">属性</th>
+            <th style="vertical-align: bottom;border: 1px solid #dee2e6;padding: 5px;">值</th>
         </th>
     </thead>
     <tbody>
         <tr>
-            <td style="border: 1px solid #dee2e6;padding: 5px;">Server Name</td>
+            <td style="border: 1px solid #dee2e6;padding: 5px;">服务器名称</td>
             <td style="border: 1px solid #dee2e6;padding: 5px;">{MachineName.Value}</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #dee2e6;padding: 5px;">Smtp Server</td>
+            <td style="border: 1px solid #dee2e6;padding: 5px;">Smtp服务器</td>
             <td style="border: 1px solid #dee2e6;padding: 5px;">{SmtpServer.Value}</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #dee2e6;padding: 5px;">Port</td>
+            <td style="border: 1px solid #dee2e6;padding: 5px;">Smtp端口</td>
             <td style="border: 1px solid #dee2e6;padding: 5px;">{SmtpServerPort.Value}</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #dee2e6;padding: 5px;">Username</td>
+            <td style="border: 1px solid #dee2e6;padding: 5px;">发件人</td>
             <td style="border: 1px solid #dee2e6;padding: 5px;">{SmtpUserName.Value}</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #dee2e6;padding: 5px;">Sender Display Name</td>
+            <td style="border: 1px solid #dee2e6;padding: 5px;">发件人昵称</td>
             <td style="border: 1px solid #dee2e6;padding: 5px;">{EmailDisplayName.Value}</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #dee2e6;padding: 5px;">Enable SSL</td>
+            <td style="border: 1px solid #dee2e6;padding: 5px;">启用S​​SL</td>
             <td style="border: 1px solid #dee2e6;padding: 5px;">{EnableSsl.Value}</td>
         </tr>
     </tbody>
@@ -44,34 +44,34 @@
     </MessageBody>
   </MailMessage>
   <MailMessage MessageType="NewCommentNotification" IsHtml="true">
-    <MessageSubject>[edi.wang] New comment from {Username.Value}</MessageSubject>
+    <MessageSubject>[blog] 新留言来自 {Username.Value}</MessageSubject>
     <MessageBody>
       <![CDATA[
-<p><strong>{Username.Value}</strong> commentted:</p>
+<p><strong>{Username.Value}</strong> 已评论:</p>
 <div style="border: 1px solid #CECECE; padding: 10px;">
   {CommentContent.Value}
 </div>
 <div>
 <i>{PostTitle.Value}</i> <br />
-Time (UTC): {CreateOnUtc.Value} <br />
-Email: {Email.Value} <br />
+时间 (UTC): {CreateOnUtc.Value} <br />
+邮箱: {Email.Value} <br />
 IP: {IpAddress.Value}
 </div>
       ]]>
     </MessageBody>
   </MailMessage>
   <MailMessage MessageType="AdminReplyNotification" IsHtml="true">
-    <MessageSubject>[edi.wang] New reply for your comment</MessageSubject>
+    <MessageSubject>[blog.iwenli.org] 您的留言被回复啦~~</MessageSubject>
     <MessageBody>
       <![CDATA[
 <p>      
-  Your comment on "<i><a href="{RouteLink.Value}" target="_blank">{PostTitle.Value}</a></i>" has been replied by blog administrator:
+  您在博文 "<i><a href="{RouteLink.Value}" target="_blank">{PostTitle.Value}</a></i>" 的留言已被管理员回复:
 </p>
 <blockquote>
   {ReplyContentHtml.Value}
 </blockquote>
 <p>
-  Original Comment:
+  您的留言:
 </p>
 <blockquote>
   {CommentContent.Value}
@@ -80,15 +80,15 @@ IP: {IpAddress.Value}
     </MessageBody>
   </MailMessage>
   <MailMessage MessageType="BeingPinged" IsHtml="true">
-    <MessageSubject>[edi.wang] '{TargetPostTitle.Value}' is Referenced</MessageSubject>
+    <MessageSubject>[blog] '{TargetPostTitle.Value}' 被引用</MessageSubject>
     <MessageBody>
       <![CDATA[
-<strong>Referenced Post:</strong> {TargetPostTitle.Value} <br />
-<strong>Domain:</strong> {Domain.Value} <br />
-<strong>Url:</strong> <a href="{SourceUrl.Value}">{SourceUrl.Value}</a> <br />
-<strong>Title:</strong> {SourceTitle.Value}  <br />
+<strong>引用博文:</strong> {TargetPostTitle.Value} <br />
+<strong>引用来域:</strong> {Domain.Value} <br />
+<strong>链接:</strong> <a href="{SourceUrl.Value}">{SourceUrl.Value}</a> <br />
+<strong>标题:</strong> {SourceTitle.Value}  <br />
+<strong>时间(UTC):</strong> {PingTimeUtc.Value}
 <strong>Ip:</strong> {SourceIp.Value}  <br />
-<strong>Time (UTC):</strong> {PingTimeUtc.Value}
       ]]>
     </MessageBody>
   </MailMessage>

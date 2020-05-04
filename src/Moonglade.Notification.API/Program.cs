@@ -24,23 +24,28 @@ namespace Moonglade.Notification.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.CaptureStartupErrors(true)
-                              .ConfigureAppConfiguration((ctx, builder) =>
-                              {
-                                  var builtConfig = builder.Build();
-                                  var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                                  var keyVaultClient = new KeyVaultClient(
-                                      new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-                                  builder.AddAzureKeyVault(
-                                      $"https://{builtConfig["AzureKeyVault:Name"]}.vault.azure.net/", 
-                                      keyVaultClient, 
-                                      new DefaultKeyVaultSecretManager());
-                              })
+                               //.ConfigureAppConfiguration((ctx, builder) =>
+                               //{
+                               //    builder.AddUserSecrets<Program>();
+                               //})
+                              //.ConfigureAppConfiguration((ctx, builder) =>
+                              //{
+                              //    var builtConfig = builder.Build();
+                              //    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                              //    var keyVaultClient = new KeyVaultClient(
+                              //        new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+                              //    builder.AddAzureKeyVault(
+                              //        $"https://{builtConfig["AzureKeyVault:Name"]}.vault.azure.net/", 
+                              //        keyVaultClient, 
+                              //        new DefaultKeyVaultSecretManager());
+                              //})
                               .ConfigureKestrel(c => c.AddServerHeader = false)
                               .UseStartup<Startup>()
-                              .ConfigureLogging(logging =>
-                              {
-                                  logging.AddAzureWebAppDiagnostics();
-                              });
+                              //.ConfigureLogging(logging =>
+                              //{
+                              //    logging.AddAzureWebAppDiagnostics();
+                              //})
+                              ;
                 });
     }
 }

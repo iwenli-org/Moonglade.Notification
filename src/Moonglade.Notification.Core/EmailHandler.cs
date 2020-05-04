@@ -38,10 +38,13 @@ namespace Moonglade.Notification.Core
                 var emailSettings = new EmailSettings(
                     settings.Value.SmtpServer,
                     settings.Value.SmtpUserName,
-                    configuration[configuration["AzureKeyVault:SmtpPasswordKey"]],
+                    settings.Value.SmtpPassword,
+                    //configuration[configuration["AzureKeyVault:SmtpPasswordKey"]],
                     settings.Value.SmtpServerPort)
                 {
-                    EnableSsl = settings.Value.EnableSsl
+                    EnableSsl = settings.Value.EnableSsl,
+                    //SenderName = "",
+                    EmailDisplayName = settings.Value.EmailDisplayName
                 };
 
                 EmailHelper = new EmailHelper(configSource, emailSettings);
