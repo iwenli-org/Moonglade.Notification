@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using System.Text;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Builder;
@@ -82,7 +83,7 @@ namespace Moonglade.Notification.API
             {
                 builder.Run(async context =>
                 {
-                    await context.Response.WriteAsync($"Moonglade.Notification.API Version: {Utils.AppVersion}, .NET Core {System.Environment.Version}", Encoding.UTF8);
+                    await context.Response.WriteAsync($"Moonglade.Notification.API Version: {Utils.AppVersion}, {RuntimeInformation.FrameworkDescription}{(System.Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") is object ? " on Docker" : "")}", Encoding.UTF8);
                 });
             });
 
